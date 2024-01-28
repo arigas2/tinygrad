@@ -95,9 +95,16 @@ extern "C" __global__ void wmma_example({'half' if FLOAT16 else 'float'} *a, {'h
       wmma::store_matrix_sync(c + cRow + cCol * {N}, acc_store, {N}, wmma::mem_col_major);
     }}
   }}
+
+  int globalIdx = threadIdx.x + blockIdx.x * blockDim.x;
+
+  // Example printf usage
+  printf("Thread %d: c[%d] = %f\n", threadIdx.x, globalIdx, c[globalIdx]);
 }}
 """))
-
+cuPrintfDisplay()
+printed_output = cuPrintfGetOutputAsString()
+cuPrintfEnd()
 global_size, local_size = [(N//16)//4, (N//16)//4, 1], [32, 1, 1]
 tm = min([prog(a, b, c, global_size=global_size, local_size=local_size, wait=True) for _ in range(20)])
 print(f"{N*N:10d} {tm*1e6:9.2f} us, would be {FLOPS*1e-9/tm:9.2f} GFLOPS matmul, {BW*1e-9/tm:.2f} GB/s")

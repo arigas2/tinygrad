@@ -215,16 +215,16 @@ def flat_mv(mv:memoryview):
 # *** Helpers for CUDA-like APIs.
 
 def compile_cuda_style(prg, compile_options, prog_t, create_prog, compile_prog, get_code, get_code_size, get_log, get_log_size, check) -> bytes:
-  print(f"prg: {prg}")
-  print(f"compile_options: {compile_options}")
-  print(f"prog_t: {prog_t}")
-  print(f"create_prog: {create_prog}")
-  print(f"compile_prog: {compile_prog}")
-  print(f"get_code: {get_code}")
-  print(f"get_code_size: {get_code_size}")
-  print(f"get_log: {get_log}")
-  print(f"get_log_size: {get_log_size}")
-  print(f"check: {check}")
+  # print(f"prg: {prg}")
+  # print(f"compile_options: {compile_options}")
+  # print(f"prog_t: {prog_t}")
+  # print(f"create_prog: {create_prog}")
+  # print(f"compile_prog: {compile_prog}")
+  # print(f"get_code: {get_code}")
+  # print(f"get_code_size: {get_code_size}")
+  # print(f"get_log: {get_log}")
+  # print(f"get_log_size: {get_log_size}")
+  # print(f"check: {check}")
 
   # Inspect what the function pointers point to (if possible)
   for func in [create_prog, compile_prog, get_code, get_code_size, get_log, get_log_size, check]:
