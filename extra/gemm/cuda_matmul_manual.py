@@ -96,6 +96,7 @@ extern "C" __global__ void simple_matmul(half *a, half *b, float *c) {{
   int t = (blockDim.z * blockDim.y * threadIdx.z) + (blockDim.x * threadIdx.y) + threadIdx.x;
   // Tile using a 2D grid
   int warpM = (blockIdx.x * blockDim.x + threadIdx.x) / {warp_size[0]};
+  std::cout << "warpM" << warpM << std::endl;
   int warpN = (blockIdx.y * blockDim.y + threadIdx.y) / {warp_size[1]};
   // Declare fragments
   half8 a_frag = make_half8(0.0f,0.0f,0.0f,0.0f,0.0f,0.0f,0.0f,0.0f);
