@@ -169,7 +169,7 @@ extern "C" __global__ void simple_matmul(half *a, half *b, float *c) {{
 }}
 """
 
-compiled = compile_cuda(code)
+compiled = compile_cuda(code, "sm_75")
 prog = CUDAProgram(device, "simple_matmul", compiled)
 
 tm = min([prog(a, b, c, global_size=global_size, local_size=local_size, wait=True) for _ in range(1)])
