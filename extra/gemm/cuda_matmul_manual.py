@@ -59,7 +59,6 @@ cudaalloc.copyin(b, bytearray(nb.astype(np.float16)))
 
 
 code = f"""
-#include <cstdio.h>
 #include <mma.h>
 using namespace nvcuda;
 struct __align__(16) float8 {{
