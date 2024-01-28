@@ -227,11 +227,11 @@ def compile_cuda_style(prg, compile_options, prog_t, create_prog, compile_prog, 
   # print(f"check: {check}")
 
   # Inspect what the function pointers point to (if possible)
-  for func in [create_prog, compile_prog, get_code, get_code_size, get_log, get_log_size, check]:
-    try:
-      print(f"Function {func.__name__} points to: {func}")
-    except AttributeError:
-      print(f"Object {func} is not a function or does not have __name__ attribute")
+  # for func in [create_prog, compile_prog, get_code, get_code_size, get_log, get_log_size, check]:
+  #   try:
+  #     print(f"Function {func.__name__} points to: {func}")
+  #   except AttributeError:
+  #     print(f"Object {func} is not a function or does not have __name__ attribute")
 
   check(create_prog(ctypes.byref(prog := prog_t()), prg.encode(), "<null>".encode(), 0, None, None))
   status = compile_prog(prog, len(compile_options), to_char_p_p([o.encode() for o in compile_options]))
